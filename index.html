@@ -227,6 +227,40 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
   .brand-grid{grid-template-columns:1fr}
 }
 
+/* GUIDE SECTION */
+.guide-section{padding:80px 0;background:var(--champagne)}
+.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.guide-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);cursor:pointer;transition:var(--transition);overflow:hidden;display:flex;flex-direction:column}
+.guide-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.guide-card-icon{font-size:2.4rem;padding:28px 24px 8px}
+.guide-cat-tag{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:var(--champagne);color:var(--gold-dark);margin-bottom:8px}
+.guide-card-body{padding:0 24px 24px;flex:1;display:flex;flex-direction:column}
+.guide-card-title{font-family:var(--font-serif);font-size:1rem;color:var(--navy);font-weight:700;margin-bottom:8px;line-height:1.4}
+.guide-card-desc{font-size:0.82rem;color:var(--text-light);line-height:1.6;margin-bottom:12px;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.guide-card-footer{font-size:0.78rem;color:var(--gold-dark);font-weight:600;letter-spacing:0.5px}
+/* Article Overlay */
+.article-body{max-width:720px;margin:0 auto;padding:40px 24px 80px}
+.article-cat-badge{display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;background:var(--champagne);color:var(--gold-dark);margin-bottom:16px}
+.article-title{font-family:var(--font-serif);font-size:clamp(1.4rem,4vw,1.9rem);color:var(--navy);font-weight:700;margin-bottom:16px;line-height:1.3}
+.article-lead{font-size:0.98rem;color:var(--text-light);line-height:1.85;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.article-body h3{font-family:var(--font-serif);color:var(--navy);font-size:1.1rem;border-left:3px solid var(--gold);padding-left:12px;margin:36px 0 12px;line-height:1.4}
+.article-body p{font-size:0.95rem;color:var(--text);line-height:1.85;margin-bottom:14px}
+.article-body ul,.article-body ol{padding-left:20px;margin-bottom:14px}
+.article-body li{font-size:0.93rem;color:var(--text);line-height:1.8;margin-bottom:6px}
+.article-callout{background:rgba(212,175,55,0.12);border-radius:var(--radius-sm);padding:16px 20px;margin:20px 0;font-size:0.9rem;color:var(--text);border-left:3px solid var(--gold)}
+.article-callout strong{color:var(--navy)}
+.article-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.88rem}
+.article-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:0.85rem}
+.article-table td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+.article-table tr:nth-child(even) td{background:rgba(249,231,208,0.4)}
+.article-summary{background:var(--navy);color:#fff;border-radius:var(--radius);padding:24px 28px;margin-top:40px}
+.article-summary h3{color:var(--gold);border-left:none;padding-left:0;font-size:1rem;margin:0 0 14px}
+.article-summary li{font-size:0.88rem;color:rgba(255,255,255,0.85);margin-bottom:8px}
+@media(max-width:768px){
+  .guide-grid{grid-template-columns:1fr}
+  .article-body{padding:28px 16px 60px}
+}
+
 /* FOOTER */
 .footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:60px 24px;text-align:center}
 .footer p{font-size:0.8rem;line-height:1.8;max-width:600px;margin:0 auto}
@@ -277,6 +311,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
       <li><a href="javascript:void(0)" onclick="startQuiz();this.closest('.nav-links').classList.remove('open')">診断する</a></li>
       <li><a href="#map" onclick="this.closest('.nav-links').classList.remove('open')">マップ</a></li>
       <li><a href="#catalog" onclick="this.closest('.nav-links').classList.remove('open')">ブランド一覧</a></li>
+      <li><a href="#guides" onclick="this.closest('.nav-links').classList.remove('open')">ガイド</a></li>
     </ul>
   </div>
 </nav>
@@ -376,6 +411,27 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
     <div class="brand-grid" id="brandGrid"></div>
   </div>
 </section>
+
+<!-- GUIDE SECTION -->
+<section class="section guide-section" id="guides">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="en">BUYER'S GUIDE</span>
+      <h2>婚約指輪ガイド</h2>
+      <p>指輪選びの前に知っておきたい基礎知識</p>
+    </div>
+    <div class="guide-grid reveal" id="guideGrid"></div>
+  </div>
+</section>
+
+<!-- GUIDE DETAIL OVERLAY -->
+<div class="brand-detail-overlay" id="guideDetailOverlay">
+  <div class="bd-nav-bar">
+    <button class="bd-nav-back" onclick="closeArticle()">&#8592; ガイド一覧に戻る</button>
+    <span class="bd-nav-title" id="gdNavTitle"></span>
+  </div>
+  <div class="brand-detail-inner" id="guideDetailInner"></div>
+</div>
 
 <!-- BRAND DETAIL OVERLAY -->
 <div class="brand-detail-overlay" id="brandDetailOverlay">
@@ -1017,6 +1073,193 @@ enuove:{
   eng:{sig:"ソリティア / エタニティ — 洗練されたミニマルデザインのエンゲージリング。",exp:"主にオンライン。銀座ショールームで実物確認も可能（要予約）。スタイリッシュな空間で試着できます。公式EC対応あり。",pro:"「デザインと品質で選んだ」というブランド名に頼らない洗練された選択が彼女の共感を得ます。",care:"メンテナンス対応。品質保証書付き。"}}
 };
 
+// ===================== GUIDE ARTICLES =====================
+const ARTICLES=[
+{
+  id:'4c',icon:'💎',cat:'ダイヤ知識',
+  title:'ダイヤモンドの4C完全ガイド',
+  desc:'Cut・Color・Clarity・Caratの意味と、婚約指輪選びでの正しい優先順位を解説します。',
+  body:`<span class="article-cat-badge">ダイヤ知識</span>
+<h2 class="article-title">ダイヤモンドの4C完全ガイド</h2>
+<p class="article-lead">婚約指輪を選ぶ際に必ず出てくる「4C」。Cut・Color・Clarity・Caratの4つの評価軸でダイヤモンドの品質を客観的に示す国際基準で、1940年代にGIA（米国宝石学会）の創設者ロバート・シプリーが考案しました。現在も世界中の宝石商・鑑定機関が採用しており、4Cを理解しておくだけでショップでの会話が格段にスムーズになります。</p>
+<h3>Cut（カット）— 輝きを最も左右する要素</h3>
+<p>4Cの中で唯一、職人の技術によって決まる要素です。カットの精度がダイヤモンドへの光の入り方・反射・散乱を決定し、あの独特の輝きを生み出します。GIAのカット評価は Excellent・Very Good・Good・Fair・Poor の5段階。婚約指輪にはExcellent（EX）以上を選ぶのが一般的です。カラットが大きくてもカットが悪ければ輝かず、逆に小さいダイヤでもカットが優れていれば美しく見えます。</p>
+<h3>Color（カラー）— D〜Zの23段階評価</h3>
+<p>ダイヤモンドの色味を評価する基準で、D（完全無色）〜Z（黄みが目立つ）の23段階で示します。GIAが1953年に導入。D〜FがColorless（無色）、G〜JがNear Colorless（ほぼ無色）です。婚約指輪の実用的な目安はD〜Hで、プラチナの台にはD〜Gが特に映えます。G・H程度なら肉眼でほぼ無色に見え、D〜Fとの価格差は大きいため費用対効果が高い選択です。</p>
+<h3>Clarity（クラリティ）— 内包物・傷の程度</h3>
+<p>ダイヤモンド内部の内包物（インクルージョン）と表面の傷（ブレミッシュ）を評価します。GIAのグレードはFL（Flawless）・IF・VVS1/2・VS1/2・SI1/2・I1/2/3の11段階。FL・IFは極めて希少でプレミア価格がつきます。VS1・VS2は肉眼では内包物が見えず、コストパフォーマンスが高い選択です。SI1も熟練鑑定士がルーペで確認できる程度で、肉眼ではわからないことが多く予算を抑えたい場合の現実的な選択肢です。</p>
+<h3>Carat（カラット）— 重量の単位</h3>
+<p>ダイヤモンドの重さを示す単位で、1カラット＝200ミリグラム（0.2g）です。重量が増えるほど直径も大きくなりますが、同じカラットでもカット形状（ラウンド・プリンセス等）によって見た目のサイズは異なります。価格はカラット数に対して単純比例ではなく、0.5・0.7・1.0ctなどのキリのよいサイズで大きく跳ね上がるため、0.48・0.96ctなど少し下のサイズを選ぶとコストを抑えられます。</p>
+<div class="article-callout"><strong>婚約指輪での4C優先順位：Cut &gt; Color &gt; Clarity &gt; Carat</strong><br>輝きの基礎はカットで決まります。予算が限られる場合は、カラット数を少し下げてもカットにEXを選ぶことで、より美しい指輪になります。</div>
+<div class="article-summary"><h3>まとめ</h3><ul>
+<li>4CはGIAが1940年代に制定した世界共通のダイヤモンド品質基準</li>
+<li>Cutは唯一人間が決める要素で、輝きに最も直結する。EX以上が婚約指輪の標準</li>
+<li>ColorはG〜H、ClarityはVS2〜SI1が費用対効果の高い選択肢</li>
+<li>0.5・1.0ctの境界付近はわずかに下げるだけで大きくコストを抑えられる</li>
+</ul></div>`
+},
+{
+  id:'budget',icon:'💰',cat:'購入計画',
+  title:'婚約指輪の予算：相場と正しい決め方',
+  desc:'「給料3ヶ月分」はある企業の広告戦略。ゼクシィ2024調査に基づく実際の相場と、予算の立て方を解説。',
+  body:`<span class="article-cat-badge">購入計画</span>
+<h2 class="article-title">婚約指輪の予算：相場と正しい決め方</h2>
+<p class="article-lead">「給料の3ヶ月分」という言葉を耳にしたことがあるはずです。実はこれ、特定の企業の広告戦略から生まれた慣習であり、義務でも常識でもありません。ゼクシィ結婚トレンド調査2024によると実際の平均購入額は39万円。正しい相場を知ったうえで、二人のライフスタイルに合った予算を自分たちで決めることが重要です。</p>
+<h3>「給料3ヶ月分」の正体</h3>
+<p>1938年、世界恐慌後のダイヤモンド市場低迷に苦しんだDe Beersは、広告代理店N.W.Ayerに依頼し「婚約指輪＝ダイヤモンド」というイメージを創り上げました。当初は「給料1ヶ月分」という規範を広め、1980年代には「2ヶ月分」へ引き上げるキャンペーンを展開。1947年にはコピーライターFrances Geretyが「A Diamond is Forever（ダイヤモンドは永遠に）」というスローガンを生み出し、これは後に20世紀最高の広告コピーと評されています。この戦略の結果、1940年に10%だった米国での婚約指輪＝ダイヤモンドの普及率が1990年には80%に達しました。「3ヶ月分」は日本市場向けにローカライズされた規範です。</p>
+<h3>実際の購入額データ（2024年）</h3>
+<p>ゼクシィ結婚トレンド調査2024によると、婚約指輪の平均購入額は39万円（首都圏）。最多価格帯は30〜40万円未満（30.3%）で、20代平均38.4万円・30代平均39.5万円です。40代では平均64万円と跳ね上がる傾向があります。</p>
+<table class="article-table"><tr><th>予算目安</th><th>主な選択肢</th></tr>
+<tr><td>〜20万円</td><td>国内アトリエ・EC系ブランド。品質にこだわった選択も可能</td></tr>
+<tr><td>20〜40万円</td><td>国内ブライダル専業ブランドの主要ゾーン</td></tr>
+<tr><td>40〜60万円</td><td>ミキモト・タサキ等の国内ラグジュアリーの入門〜中堅</td></tr>
+<tr><td>60〜100万円</td><td>カルティエ・ブルガリ等のハイジュエリーブランド入門〜中堅</td></tr>
+<tr><td>100万円〜</td><td>ヴァン クリーフ・ショパール・ハリー・ウィンストン等</td></tr></table>
+<h3>予算の正しい立て方</h3>
+<p>固定ルール（給料の何ヶ月分等）を先に決める必要はありません。まず、結婚式・新居・新生活費・ハネムーンを含めた総合的な資金計画を立て、「婚約指輪に充てられる金額」を算出してからブランドを選ぶ順序が重要です。同じ予算でも、ブランドの知名度・ダイヤの品質・デザイン・アフターサービスのどこに価値を置くかで最適な選択肢は変わります。</p>
+<div class="article-callout"><strong>最も重要なのは金額より「彼女の好みに合うかどうか」</strong><br>高額な指輪より彼女のライフスタイルやデザインの好みに合う指輪の方が毎日着けてもらえます。予算を決めたら次のステップはデザインリサーチです。</div>
+<div class="article-summary"><h3>まとめ</h3><ul>
+<li>「給料3ヶ月分」はDe Beersが作った広告慣習であり、義務でも常識でもない</li>
+<li>ゼクシィ2024調査の平均は39万円、最多価格帯は30〜40万円未満</li>
+<li>総合的な資金計画を立ててから婚約指輪の予算を決める順序が重要</li>
+<li>金額より彼女のデザインの好みを最優先にすることが長く愛用される指輪につながる</li>
+</ul></div>`
+},
+{
+  id:'size',icon:'📏',cat:'購入計画',
+  title:'サプライズプロポーズとサイズ問題',
+  desc:'バレずにサイズを確認する方法5選と、万が一サイズが合わなかった時の対処法を解説。',
+  body:`<span class="article-cat-badge">購入計画</span>
+<h2 class="article-title">サプライズプロポーズとサイズ問題</h2>
+<p class="article-lead">サプライズプロポーズで婚約指輪を実物で渡したい。でも彼女の指のサイズが分からない——これは多くの男性が直面する問題です。サイズが合わなくても後からサイズ直しができるので過度な心配は不要ですが、事前に確認できるに越したことはありません。バレずにサイズを調べる方法と、サイズ直しの現実を解説します。</p>
+<h3>日本の指輪サイズ（号数）の基礎知識</h3>
+<p>日本では指輪のサイズを「号」で表します。指の周囲の長さ（内周）で計測し、女性の平均は8〜10号（内周48〜50mm前後）、男性の平均は13〜18号です。1号の差は内周約0.8mmに相当します。朝と夜で指がむくむため、同じ指でも最大1号前後サイズが変わります。一般的には午後〜夕方が最もむくんだ状態で、この時間帯に合わせるとゆとりのあるサイズになります。</p>
+<h3>バレずにサイズを確認する方法</h3>
+<p>以下の方法を状況に応じて使い分けてください。</p>
+<ol>
+<li><strong>共通の友人・家族に聞く</strong> — 最も確実で自然。「プロポーズを考えているので指輪サイズを聞いてほしい」と頼む</li>
+<li><strong>彼女が持っている他の指輪を借りる</strong> — ブライダルショップに持参すれば号数を測定してもらえる</li>
+<li><strong>デートでジュエリーショップに立ち寄る</strong> — 「ちょっと見てみよう」と誘い、さりげなく試着させる</li>
+<li><strong>紙や糸で型取りする</strong> — 彼女が寝ている間に左手薬指を細い紙や糸で一周させ、重なった部分に印をつけて長さを測る</li>
+<li><strong>写真から推測する</strong> — 彼女の手の写真（スマホの写真等）からある程度の目安になる場合も</li>
+</ol>
+<h3>サイズ直しの現実</h3>
+<p>ほとんどのブランドはサイズ直しに対応しています。費用の目安はプラチナ・ゴールドの場合で3,000〜5,000円＋地金代（1号ごとに1,000〜2,000円程度）。期間は約2〜3週間が標準です。ただし以下の場合はサイズ直しが難しい・できないことがあります。</p>
+<ul>
+<li>フルエタニティリング（全周にダイヤが入ったデザイン）</li>
+<li>複雑な装飾・精巧な細工が全周に施されたもの</li>
+<li>サイズ差が大きすぎる場合（目安として±3号以上）</li>
+</ul>
+<h3>実物なしで渡す選択肢</h3>
+<p>「サイズが合わないかもしれない」という不安を解消する別の方法として、プロポーズ時は空のリングケースや仮のリングで気持ちを伝え、後日一緒に指輪を選ぶスタイルも近年増えています。「二人で選ぶ時間も思い出になる」という考え方で、この方法を推奨するブランドも少なくありません。</p>
+<div class="article-callout"><strong>まずはブランドに相談を</strong><br>多くのブランドのスタッフはこうした相談に慣れています。「サプライズプロポーズを考えています」と伝えるだけで、サイズ選びのアドバイスや柔軟なサイズ直し対応など適切なサポートをしてくれます。</div>
+<div class="article-summary"><h3>まとめ</h3><ul>
+<li>女性の指輪サイズの平均は8〜10号（内周48〜50mm前後）</li>
+<li>サイズが違ってもサイズ直しで対応可能（費用3,000〜5,000円+地金代、期間2〜3週間が目安）</li>
+<li>フルエタニティ等一部デザインはサイズ直し不可のため購入前に要確認</li>
+<li>一緒に選ぶスタイルも近年主流化しており、そちらもひとつの選択肢</li>
+</ul></div>`
+},
+{
+  id:'material',icon:'⚗️',cat:'素材知識',
+  title:'プラチナ vs ゴールド 素材完全比較',
+  desc:'Pt950とK18の硬度・アレルギー・耐久性・価格の違いを正確なデータで比較。日本市場の実情も解説。',
+  body:`<span class="article-cat-badge">素材知識</span>
+<h2 class="article-title">プラチナ vs ゴールド 素材完全比較</h2>
+<p class="article-lead">婚約指輪の素材選びはデザインと同じくらい重要な判断です。日本ではプラチナが圧倒的主流ですが、ゴールドにも独自の魅力があります。「プラチナの方が高級」というイメージだけで選ぶのではなく、各素材の特性を正確に理解したうえで選びましょう。</p>
+<h3>素材の純度と表記</h3>
+<p>ジュエリーに使われる金属は純度100%ではなく、他の金属（割金）を混ぜた合金です。純度はプラチナが「Pt＋数値」、ゴールドが「K（カラット）＋数値」で表します。婚約指輪・結婚指輪で最も多く使われるのはPt950（純度95%）とK18（純度75%）です。</p>
+<table class="article-table"><tr><th>表記</th><th>素材</th><th>純度</th><th>特徴</th></tr>
+<tr><td>Pt950</td><td>プラチナ</td><td>95%</td><td>婚約・結婚指輪の国内標準。アレルギーが少ない</td></tr>
+<tr><td>Pt900</td><td>プラチナ</td><td>90%</td><td>やや硬め。一部ブランドで採用</td></tr>
+<tr><td>K18YG</td><td>イエローゴールド</td><td>75%</td><td>温かみのある黄金色。アトリエ系に多い</td></tr>
+<tr><td>K18WG</td><td>ホワイトゴールド</td><td>75%</td><td>白い見た目だがロジウムメッキが必要</td></tr>
+<tr><td>K18PG</td><td>ピンクゴールド</td><td>75%</td><td>銅を割金に使用。温かみのある肌色</td></tr></table>
+<h3>硬度の比較</h3>
+<p>硬度の指標のひとつであるビッカース硬度で比較すると、K18ゴールド（最大約250HV）はPt900（最大約130HV）より硬い素材です。ただしプラチナには「粘り強さ（靭性）」があり、小さな爪（プロング）でダイヤモンドをしっかり固定できる性質があります。そのため、ダイヤモンドを爪留めする婚約指輪の台座素材としてプラチナが優れているとされます。</p>
+<h3>アレルギーリスク</h3>
+<p>Pt950は割金が5%のみのため、金属アレルギーが起きにくい素材です。K18ホワイトゴールド（WG）はニッケルを割金に含む製品がある場合があり、ニッケルアレルギーの方は注意が必要です。K18ピンクゴールド（PG）は銅が主な割金で、銅アレルギーの方は確認が必要です。アレルギーに不安がある場合はPt950または純度の高い素材を選ぶのが安全です。</p>
+<h3>使用感と手入れ</h3>
+<p>プラチナは日常の使用で細かいスクラッチ（擦り傷）がつきやすく、鏡面を失います。ただしこれは「素材が減った」わけではなく、磨き直しで元の輝きに戻せます。K18ゴールドも傷はつきますが、プラチナより硬いためエッジが保たれやすい特徴があります。どちらも定期的なクリーニングと磨きを推奨しており、多くのブランドが無料または有償でメンテナンスサービスを提供しています。</p>
+<div class="article-callout"><strong>日本では婚約指輪の大半がプラチナ</strong><br>国内ブライダル市場では婚約指輪の素材としてプラチナが圧倒的多数を占め、ゴールドはデザイナーズブランドやアトリエ系での採用が多い傾向です。ゴールドの色味を活かしたデザインを選びたい場合や、パートナーがゴールドのアクセサリーをよく着ける場合はK18も積極的に検討しましょう。</div>
+<div class="article-summary"><h3>まとめ</h3><ul>
+<li>Pt950（プラチナ95%）は割金が少なくアレルギーリスクが低く、婚約指輪の国内標準</li>
+<li>K18（ゴールド75%）はビッカース硬度が高いが、K18WGはニッケルアレルギーに注意</li>
+<li>プラチナは粘り強さから爪留めダイヤモンドの固定に優れる</li>
+<li>どちらも傷はつく。磨き直しで対応できる点は共通</li>
+</ul></div>`
+},
+{
+  id:'certificate',icon:'📜',cat:'ダイヤ知識',
+  title:'鑑定書の読み方と信頼できる機関',
+  desc:'GIA・中央宝石研究所・AGTの違いと、グレーディングレポートの各項目の正しい読み方。',
+  body:`<span class="article-cat-badge">ダイヤ知識</span>
+<h2 class="article-title">鑑定書の読み方と信頼できる機関</h2>
+<p class="article-lead">「GIA鑑定書付き」という言葉をよく目にしますが、鑑定書が何を証明しているのかを正確に理解している人は少ないかもしれません。鑑定書を読み解けると、同じ予算でもより客観的に品質を比較できるようになります。</p>
+<h3>鑑定書（グレーディングレポート）とは</h3>
+<p>ダイヤモンドの品質を第三者の専門機関が評価・証明した文書です。4C（カット・カラー・クラリティ・カラット）をはじめとする客観的な品質データが記載されます。宝石の種類や真贋を証明する「宝石鑑別書」とは別物です。全てのダイヤモンドに鑑定書があるわけではなく、価格や品質基準によって付属しない場合もあります。</p>
+<h3>日本で信頼される3つの鑑定機関</h3>
+<p>「A鑑」と呼ばれる最上位の信頼性をもつ鑑定機関は、業界内でGIA・CGL・AGTの3機関とされています。</p>
+<table class="article-table"><tr><th>機関</th><th>特徴</th></tr>
+<tr><td>GIA（米国宝石学会）</td><td>4Cの制定機関。世界最大の宝石学機関で国際的な信頼性が最も高い。ラウンドブリリアントのみカット評価あり</td></tr>
+<tr><td>CGL（中央宝石研究所）</td><td>国内最大の鑑定機関。日本市場で最も多く流通する鑑定書</td></tr>
+<tr><td>AGT（AGTジェムラボラトリー）</td><td>GIA提携ラボ。カラーダイヤモンドの色識別精度に定評があり市場での信頼性が高い</td></tr></table>
+<h3>鑑定書の主な記載項目</h3>
+<ul>
+<li><strong>Shape &amp; Cutting Style</strong>：カット形状（ラウンドブリリアント、プリンセスなど）</li>
+<li><strong>Carat Weight</strong>：重量（例：0.50ct）</li>
+<li><strong>Color Grade</strong>：D〜Z（例：G）</li>
+<li><strong>Clarity Grade</strong>：FL〜I3（例：VS2）</li>
+<li><strong>Cut Grade</strong>：Excellent〜Poor（GIAはラウンドブリリアントのみ記載）</li>
+<li><strong>Fluorescence</strong>：蛍光性。None/Faint/Medium/Strong/Very Strongの5段階</li>
+<li><strong>Plot（プロット）</strong>：内包物の位置を示した図</li>
+</ul>
+<h3>蛍光性（フルオレッセンス）について</h3>
+<p>蛍光性は紫外線（UV光）に当たったときにダイヤが発光する性質です。StrongやVery Strongの蛍光性があると、自然光下でダイヤが白っぽく曇って見える場合があります。None〜Faint程度が無難ですが、Medium程度までは肉眼で気になることは少ないとされます。</p>
+<div class="article-callout"><strong>鑑定書を100%信用しすぎないことも大切</strong><br>同一のダイヤモンドでも、鑑定機関や鑑定士によってグレードが1段階前後することがあります。鑑定書は重要な参考情報ですが、最終的には肉眼での輝きや見た目の美しさで判断することが大切です。</div>
+<div class="article-summary"><h3>まとめ</h3><ul>
+<li>鑑定書はダイヤモンドの品質を第三者が証明した文書で、宝石鑑別書とは別物</li>
+<li>信頼性の高い「A鑑」機関はGIA・CGL・AGTの3つ</li>
+<li>蛍光性（フルオレッセンス）はNone〜Faintが無難</li>
+<li>鑑定書は参考情報。最終的には肉眼での輝きで判断を</li>
+</ul></div>`
+},
+{
+  id:'layering',icon:'💍',cat:'選び方',
+  title:'婚約指輪と結婚指輪の重ね付けガイド',
+  desc:'日本での重ね付けスタイルの基本から、サイズ・デザイン・素材を合わせるセットリングの考え方まで。',
+  body:`<span class="article-cat-badge">選び方</span>
+<h2 class="article-title">婚約指輪と結婚指輪の重ね付けガイド</h2>
+<p class="article-lead">婚約指輪は「プロポーズ時に渡す」もの、結婚指輪は「挙式で交換する」ものです。日本では婚約後に婚約指輪を左手薬指に着け、挙式後は結婚指輪と2本重ねて着用するスタイルが主流です。後になって「重ね付けが難しい」とならないよう、婚約指輪を選ぶ段階から重ね付けを考慮したポイントを解説します。</p>
+<h3>婚約指輪と結婚指輪：基本の違い</h3>
+<p>婚約指輪（エンゲージリング）は婚約の証として贈るもので、ダイヤモンドが主石として設定されているデザインが多く、華やかさと特別感が重要視されます。結婚指輪（マリッジリング）は結婚の証として夫婦で交換するもので、毎日着用することが前提のためシンプルで着けやすいデザインが主流です。日本では挙式後にこの2本を左手薬指に重ねて着用するのが一般的なスタイルです。</p>
+<h3>重ね付けで起きやすい問題</h3>
+<ul>
+<li><strong>高さが合わない</strong>：婚約指輪の台座（ヘッド）が高すぎると結婚指輪と隙間ができガタつく</li>
+<li><strong>素材が違うと傷み方が異なる</strong>：プラチナとゴールドを重ねると硬度差で柔らかい方に傷がつきやすい</li>
+<li><strong>デザインが干渉する</strong>：ふたつのリングの幅・形状が合わないと見た目が不自然になる</li>
+<li><strong>ぴったりつかない</strong>：両方が真っ直ぐなデザインの場合、婚約指輪の台座が邪魔して密着しない</li>
+</ul>
+<h3>重ね付けを意識したデザイン選びのポイント</h3>
+<ol>
+<li><strong>同ブランドのセットリングを選ぶ</strong>：最も確実。最初から2本セットで設計されており、重ね付けを前提としたフォルムになっている</li>
+<li><strong>素材を統一する</strong>：両方Pt950、または両方K18など、同素材にすると傷み方が均一で美しさが長持ちする</li>
+<li><strong>ウェーブ型の結婚指輪を選ぶ</strong>：婚約指輪の台座形状に沿って湾曲したデザインの結婚指輪は密着性が高く見た目もすっきりする</li>
+<li><strong>結婚指輪はシンプルに</strong>：表面が平らなストレートまたはゆるやかなアーチ型が最も合わせやすい</li>
+<li><strong>幅のバランスを確認する</strong>：婚約指輪と結婚指輪の幅が大きく違うと見た目のバランスが悪くなりやすい</li>
+</ol>
+<h3>セットリングとは</h3>
+<p>婚約指輪と結婚指輪を最初からペアとして設計した組み合わせのことです。多くのブライダルブランドが「セットリング」または「ブライダルセット」として提案しており、同ブランドのセットリングを選ぶことが重ね付けトラブルを防ぐ最も確実な方法です。両方を同時に購入するとセット割引が適用されるブランドも少なくありません。</p>
+<div class="article-callout"><strong>婚約指輪だけを先に決めた場合でも大丈夫</strong><br>後から結婚指輪を探す場合、婚約指輪を実際に持参してジュエリーショップで「このリングに合う結婚指輪を選びたい」と相談すると、スタッフが台座形状・高さ・幅を見て最適な組み合わせを提案してくれます。</div>
+<div class="article-summary"><h3>まとめ</h3><ul>
+<li>日本では婚約指輪と結婚指輪を左手薬指に2本重ねて着用するのが主流</li>
+<li>重ね付けは台座の高さ・素材・幅が合わないと問題が起きやすい</li>
+<li>最も確実な解決策は同ブランドのセットリングを選ぶこと</li>
+<li>後から合わせる場合も、婚約指輪を持参してショップで相談すれば適切な提案が得られる</li>
+</ul></div>`
+}
+];
+
 // ===================== TYPE DEFINITIONS =====================
 const TYPE_GROUPS={
   crown:{name:"Crown",ja:"クラウン",desc:"王道ラグジュアリー",emoji:"👑",color:"#C41230"},
@@ -1474,6 +1717,38 @@ function renderCatalog(){
   }).join('');
 }
 
+// ===================== GUIDE FUNCTIONS =====================
+function renderGuides(){
+  const grid=document.getElementById('guideGrid');
+  if(!grid)return;
+  grid.innerHTML=ARTICLES.map(a=>`
+    <div class="guide-card reveal" onclick="showArticle('${a.id}')">
+      <div class="guide-card-icon">${a.icon}</div>
+      <div class="guide-card-body">
+        <span class="guide-cat-tag">${a.cat}</span>
+        <div class="guide-card-title">${a.title}</div>
+        <div class="guide-card-desc">${a.desc}</div>
+        <div class="guide-card-footer">読む →</div>
+      </div>
+    </div>`).join('');
+}
+function showArticle(id){
+  const a=ARTICLES.find(x=>x.id===id);
+  if(!a)return;
+  const overlay=document.getElementById('guideDetailOverlay');
+  const inner=document.getElementById('guideDetailInner');
+  const navTitle=document.getElementById('gdNavTitle');
+  inner.innerHTML=`<div class="article-body">${a.body}</div>`;
+  navTitle.textContent=a.title;
+  overlay.classList.add('active');
+  overlay.scrollTop=0;
+  document.body.style.overflow='hidden';
+}
+function closeArticle(){
+  document.getElementById('guideDetailOverlay').classList.remove('active');
+  document.body.style.overflow='';
+}
+
 // ===================== EVENT LISTENERS =====================
 document.querySelectorAll('#filters .filter-chip[data-cat]').forEach(el=>{
   el.addEventListener('click',()=>{
@@ -1509,6 +1784,8 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 // ===================== INIT =====================
 renderMap();
 renderCatalog();
+renderGuides();
+document.querySelectorAll('.guide-card.reveal').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
