@@ -389,6 +389,33 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
   .type-card-avatar{width:76px;height:76px}
   .result-extra{grid-template-columns:1fr}
 }
+
+/* ===== TYPE MAP（タイプ図鑑） ===== */
+.typemap-section{background:linear-gradient(180deg,var(--champagne) 0%,var(--cream) 100%)}
+.typemap-groups{display:flex;flex-direction:column;gap:56px}
+.typemap-group-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--border)}
+.typemap-group-badge{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;box-shadow:var(--shadow)}
+.typemap-group-name{font-family:var(--font-serif);font-size:1.25rem;font-weight:700;line-height:1.2}
+.typemap-group-desc{font-size:0.82rem;color:var(--text-light);margin-top:2px}
+.typemap-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.typemap-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 14px 18px;text-align:center;cursor:pointer;transition:var(--transition);border-top:4px solid transparent;position:relative;overflow:hidden}
+.typemap-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
+.typemap-card::after{content:'詳しく見る →';position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,transparent 0%,rgba(26,31,54,0.06) 100%);color:var(--gold-dark);font-size:0.72rem;font-weight:700;padding:10px 0 12px;opacity:0;transition:var(--transition)}
+.typemap-card:hover::after{opacity:1}
+.typemap-avatar{width:88px;height:88px;margin:0 auto 14px;border-radius:50%;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.12)}
+.typemap-avatar svg{width:100%;height:100%;display:block}
+.typemap-sub{font-size:0.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+.typemap-name{font-family:var(--font-serif);font-size:0.95rem;color:var(--navy);font-weight:700;margin-bottom:2px;line-height:1.3}
+.typemap-chara-title{font-size:0.68rem;color:var(--text-muted);margin-bottom:8px}
+.typemap-tagline{font-size:0.76rem;color:var(--text-light);line-height:1.5;margin-bottom:10px}
+.typemap-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.typemap-tag{font-size:0.62rem;padding:3px 8px;border-radius:12px;background:rgba(0,0,0,0.05);color:var(--text-light);font-weight:600}
+@media(max-width:768px){
+  .typemap-cards{grid-template-columns:repeat(2,1fr);gap:12px}
+  .typemap-avatar{width:72px;height:72px}
+  .typemap-card{padding:16px 10px 14px}
+  .typemap-group-header{gap:12px}
+}
 </style>
 </head>
 <body>
@@ -406,6 +433,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
       <li><a href="#map" onclick="this.closest('.nav-links').classList.remove('open')">マップ</a></li>
       <li><a href="#catalog" onclick="this.closest('.nav-links').classList.remove('open')">ブランド一覧</a></li>
       <li><a href="#guides" onclick="this.closest('.nav-links').classList.remove('open')">ガイド</a></li>
+      <li><a href="#typemap" onclick="this.closest('.nav-links').classList.remove('open')">図鑑</a></li>
       <li><a href="#faq" onclick="this.closest('.nav-links').classList.remove('open')">FAQ</a></li>
     </ul>
   </div>
@@ -538,6 +566,18 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
   <div class="brand-detail-inner" id="brandDetailInner"></div>
 </div>
 
+<!-- TYPEMAP SECTION -->
+<section class="section typemap-section" id="typemap">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label"><span class="en">Type Encyclopedia</span></div>
+      <h2 class="section-title">タイプ図鑑</h2>
+      <p class="section-desc">あなたの結果はどのタイプ？16の指輪タイプを一覧で比べよう。</p>
+    </div>
+    <div id="typemapContainer" class="typemap-groups reveal"></div>
+  </div>
+</section>
+
 <!-- FAQ SECTION -->
 <section class="section faq-section" id="faq">
   <div class="container">
@@ -587,6 +627,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
     <a href="javascript:void(0)" onclick="startQuiz()">診断する</a>
     <a href="#catalog">ブランド一覧</a>
     <a href="#guides">ガイド</a>
+    <a href="#typemap">図鑑</a>
     <a href="#faq">FAQ</a>
     <a href="https://github.com/yuuuta-fffff/ring-type/issues" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
     <a href="https://github.com/yuuuta-fffff/ring-type" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -2064,6 +2105,53 @@ function closeArticle(){
   document.body.style.overflow='';
 }
 
+// ===================== TYPEMAP =====================
+function renderTypemap(){
+  const container=document.getElementById('typemapContainer');
+  if(!container)return;
+  const GROUPS=[
+    {g:'crown',  label:'Crown',   en:'Classic × Status',   badge:'♛', bg:'#9B1B2F', desc:'王道・ラグジュアリー系'},
+    {g:'heritage',label:'Heritage',en:'Classic × Craft',    badge:'⚒', bg:'#1A237E', desc:'職人・伝統工芸系'},
+    {g:'stella', label:'Stella',  en:'Modern × Status',    badge:'✦', bg:'#6A1B9A', desc:'モダン・コンテンポラリー系'},
+    {g:'atelier',label:'Atelier', en:'Modern × Craft',     badge:'✎', bg:'#1B5E20', desc:'ハンドクラフト・一点物系'}
+  ];
+  const SUBS=[
+    {s:'brilliant',label:'Brilliant',tagline:'華やかさと存在感を纏う'},
+    {s:'eternal',  label:'Eternal',  tagline:'普遍を愛し時代を超える'},
+    {s:'grace',    label:'Grace',    tagline:'引き算の美学を信じる'},
+    {s:'pure',     label:'Pure',     tagline:'素材と技術が語り掛ける'}
+  ];
+  container.innerHTML=GROUPS.map(grp=>{
+    const cards=SUBS.map(sub=>{
+      const key=grp.g+'-'+sub.s;
+      const tags=(TYPE_TAGS[key]||[]).slice(0,2);
+      const quote=(TYPE_QUOTES[key]||'').replace(/「|」/g,'');
+      const typeObj=TYPES.find(t=>t.g===grp.g&&t.s===sub.s);
+      const typeName=typeObj?typeObj.name:'';
+      const charaTitle=typeObj?typeObj.copy:'';
+      return `<div class="typemap-card" onclick="showTypeResult('${grp.g}','${sub.s}')" style="border-top-color:${grp.bg}">
+        <div class="typemap-avatar">${makeCharaImg(grp.g,sub.s)}</div>
+        <div class="typemap-sub">${sub.label}</div>
+        <div class="typemap-name">${typeName}</div>
+        <div class="typemap-chara-title">${charaTitle}</div>
+        <div class="typemap-tagline">${sub.tagline}</div>
+        <div class="typemap-tags">${tags.map(t=>`<span class="typemap-tag">${t}</span>`).join('')}</div>
+      </div>`;
+    }).join('');
+    return `<div class="typemap-group">
+      <div class="typemap-group-header">
+        <div class="typemap-group-badge" style="background:${grp.bg};color:#fff">${grp.badge}</div>
+        <div>
+          <div class="typemap-group-name">${grp.label} <span style="font-size:0.75rem;color:var(--text-muted);font-weight:400">&nbsp;${grp.en}</span></div>
+          <div class="typemap-group-desc">${grp.desc}</div>
+        </div>
+      </div>
+      <div class="typemap-cards">${cards}</div>
+    </div>`;
+  }).join('');
+  container.querySelectorAll('.typemap-card').forEach(el=>observer.observe(el));
+}
+
 // ===================== EVENT LISTENERS =====================
 document.querySelectorAll('#filters .filter-chip[data-cat]').forEach(el=>{
   el.addEventListener('click',()=>{
@@ -2101,6 +2189,7 @@ renderMap();
 renderCatalog();
 renderGuides();
 document.querySelectorAll('.guide-card.reveal').forEach(el=>observer.observe(el));
+renderTypemap();
 // Hash-based type direct link
 (function(){
   const h=location.hash;
