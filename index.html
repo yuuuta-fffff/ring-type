@@ -340,8 +340,10 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
 .type-card-chara{font-size:0.72rem;color:var(--text-muted);margin-top:3px}
 
 /* ===== キャラクターセリフ ===== */
-.chara-quote{display:inline-block;position:relative;font-size:0.92rem;color:var(--navy);background:var(--champagne);padding:12px 24px;border-radius:50px;margin:2px auto 18px;font-weight:500;line-height:1.6}
+.chara-quote{display:inline-block;position:relative;font-size:0.96rem;color:var(--navy);background:var(--champagne);padding:12px 28px;border-radius:50px;margin:4px auto 16px;font-weight:600;line-height:1.6;font-family:var(--font-serif)}
 .chara-quote::before{content:'';position:absolute;top:-7px;left:50%;transform:translateX(-50%);border:7px solid transparent;border-bottom-color:var(--champagne);border-top:none}
+.chara-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 auto 22px;max-width:460px}
+.chara-tag{display:inline-block;background:rgba(26,31,54,0.06);color:var(--navy);font-size:0.76rem;padding:5px 12px;border-radius:20px;font-weight:600;border:1px solid rgba(26,31,54,0.1)}
 
 /* ===== 結果画面 追加カード ===== */
 .result-extra{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -1490,6 +1492,88 @@ const TYPE_MATES={
   "atelier-pure":{g:"stella",s:"pure",reason:"本質・合理性・適正価格という価値観が強く共鳴。互いの選択を尊重し合える。"}
 };
 
+// ===================== CHARACTER SVG =====================
+function makeCharaImg(g,s){
+  const GBG={crown:'#9B1B2F',heritage:'#1A237E',stella:'#6A1B9A',atelier:'#1B5E20'};
+  const SK={crown:'#FDD5B1',heritage:'#F8D59E',stella:'#FFCBA4',atelier:'#FFE0B2'};
+  const EC={crown:'#3E2723',heritage:'#4E342E',stella:'#1A237E',atelier:'#1B5E20'};
+  const HC={brilliant:'#E91E63',eternal:'#C9A84C',grace:'#607D8B',pure:'#A1887F'};
+  const hc=HC[s];
+  const blush=s==='brilliant'||s==='pure';
+  const tops={
+    crown:`<path d="M33 47 L40 37 L50 43 L60 37 L67 47 Z" fill="#FFD700" stroke="#FFA000" stroke-width="0.5"/>
+<circle cx="40" cy="37" r="2.8" fill="#FF4081"/><circle cx="50" cy="43" r="2.5" fill="#E040FB"/><circle cx="60" cy="37" r="2.8" fill="#FF4081"/>`,
+    heritage:`<rect x="32" y="42" width="36" height="7" rx="3.5" fill="${hc}" opacity="0.85"/>
+<rect x="41" y="32" width="4" height="12" rx="2" fill="${hc}" opacity="0.9"/>
+<rect x="48" y="30" width="4" height="14" rx="2" fill="${hc}" opacity="0.9"/>
+<rect x="55" y="32" width="4" height="12" rx="2" fill="${hc}" opacity="0.9"/>`,
+    stella:`<polygon points="50,29 53,38 62,38 55.5,44 58,53 50,47 42,53 44.5,44 38,38 47,38" fill="#FFD700" opacity="0.95"/>`,
+    atelier:`<circle cx="35" cy="40" r="5.5" fill="#E91E63" opacity="0.9"/>
+<circle cx="50" cy="32" r="5.5" fill="#FF9800" opacity="0.9"/>
+<circle cx="65" cy="40" r="5.5" fill="#42A5F5" opacity="0.9"/>`
+  };
+  const hairs={
+    brilliant:`<path d="M27 66 Q29 44 50 40 Q71 44 73 66" fill="${hc}" opacity="0.9"/>
+<ellipse cx="50" cy="41" rx="23" ry="6" fill="${hc}" opacity="0.9"/>`,
+    eternal:`<path d="M28 68 Q26 49 33 42 Q41 33 50 33 Q59 33 67 42 Q74 49 72 68" fill="${hc}" opacity="0.9"/>`,
+    grace:`<path d="M30 63 Q33 47 50 44 Q67 47 70 63" fill="${hc}"/>
+<rect x="30" y="44" width="40" height="7" rx="3.5" fill="${hc}"/>`,
+    pure:`<path d="M31 65 Q33 48 50 46 Q67 48 69 65" fill="${hc}" opacity="0.9"/>
+<ellipse cx="50" cy="46" rx="19" ry="5" fill="${hc}" opacity="0.9"/>`
+  };
+  const smile=s==='grace'
+    ?`<path d="M44 69.5 L56 69.5" stroke="${EC[g]}" stroke-width="1.8" stroke-linecap="round"/>`
+    :`<path d="M44 68 Q50 74 56 68" stroke="#C62828" stroke-width="1.8" fill="none" stroke-linecap="round"/>`;
+  return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<circle cx="50" cy="50" r="50" fill="${GBG[g]}"/>
+${hairs[s]}${tops[g]}
+<circle cx="50" cy="65" r="22" fill="${SK[g]}"/>
+<ellipse cx="42" cy="62" rx="3.2" ry="3.6" fill="${EC[g]}"/>
+<ellipse cx="58" cy="62" rx="3.2" ry="3.6" fill="${EC[g]}"/>
+<circle cx="43.3" cy="60.5" r="1.2" fill="white"/><circle cx="59.3" cy="60.5" r="1.2" fill="white"/>
+${blush?`<ellipse cx="37" cy="67" rx="4.5" ry="2.2" fill="#FFB3C6" opacity="0.6"/>
+<ellipse cx="63" cy="67" rx="4.5" ry="2.2" fill="#FFB3C6" opacity="0.6"/>`:''}
+${smile}</svg>`;
+}
+
+// ===================== TYPE QUOTES & TAGS =====================
+const TYPE_QUOTES={
+  "crown-brilliant":"「せっかく贈るなら、誰もが振り向くものを。」",
+  "crown-eternal":"「100年後も残るものを選ぶ。それが私の愛し方。」",
+  "crown-grace":"「わかる人にだけわかれば、それでいい。」",
+  "crown-pure":"「ダイヤ1粒に、すべてを込める。」",
+  "heritage-brilliant":"「職人の技が宿るから、こんなに美しい。」",
+  "heritage-eternal":"「指輪には物語がある。だから選ぶのが楽しい。」",
+  "heritage-grace":"「言葉より、手の仕事が雄弁だと思う。」",
+  "heritage-pure":"「見えない部分にこそ、真価がある。」",
+  "stella-brilliant":"「誰も知らないブランドを、私が最初に見つけたい。」",
+  "stella-eternal":"「今つくられたものが、100年後のクラシックになる。」",
+  "stella-grace":"「足すより引く方が、ずっと難しい。」",
+  "stella-pure":"「感情より納得感で選ぶ。それがロマンティックだと思う。」",
+  "atelier-brilliant":"「量産品には宿らない何かが、一点物にはある。」",
+  "atelier-eternal":"「世界にひとつだけが、最高のプロポーズになる。」",
+  "atelier-grace":"「好き、という直感が一番正しい。」",
+  "atelier-pure":"「値段じゃない。素材と技術が物語る。」"
+};
+const TYPE_TAGS={
+  "crown-brilliant":["大粒ダイヤが気になる","王道ブランドが好き","映えるプレゼントが得意","驚かせたい派"],
+  "crown-eternal":["流行より普遍を選ぶ","定番・ロングセラーが好き","アーカイブ品に惹かれる","100年使えるものが好き"],
+  "crown-grace":["ロゴより質感を重視","余計な装飾が苦手","さりげない上品さが好き","わかる人にわかれば良い"],
+  "crown-pure":["ダイヤの品質を調べた","一粒ソリティアが理想","鑑定書のグレードにこだわる","本質で判断する派"],
+  "heritage-brilliant":["職人の手仕事が好き","ミルグレインに惹かれる","細工・装飾の細部が好き","アンティーク調が気になる"],
+  "heritage-eternal":["ブランドの歴史に惹かれる","伝統と格式が好き","物語のある品が好き","作り手を調べてから買う"],
+  "heritage-grace":["多くを語らない職人気質","作り方にこだわる","シンプルな美しさが好き","一点集中型"],
+  "heritage-pure":["素材スペックを調べる","製法で選ぶ","見えない品質を重視","鍛造・プラチナ純度が気になる"],
+  "stella-brilliant":["新しいブランドを探す","トレンドの先端が好き","誰も知らないものが好き","情報収集が得意"],
+  "stella-eternal":["未来の定番を選ぶ","モダンと普遍の両立派","長く使えるか重視","独自の価値観がある"],
+  "stella-grace":["都会的なセンスが好き","余白の美しさを知っている","ブレない自分軸がある","シンプルを極める派"],
+  "stella-pure":["コスパを徹底調査する","EC・直営店で買うことが多い","感情より論理で動く","合理的な選択が好き"],
+  "atelier-brilliant":["アーティスティックなものが好き","個性的なデザインが好き","カラーストーンに惹かれる","指輪をアート作品と思う"],
+  "atelier-eternal":["世界にひとつが理想","エシカルな素材に関心","作り手の想いを大切にする","物語のある指輪が欲しい"],
+  "atelier-grace":["自然体のおしゃれが好き","好きという直感を信じる","プロセスを楽しむ旅人気質","ふらっとアトリエに入れる"],
+  "atelier-pure":["適正価格の商品を探す","素材と製法を徹底調査","見栄より納得感で選ぶ","無駄なコストを排除する"]
+};
+
 // ===================== SHARE HELPERS =====================
 function shareToX(){
   const g=state.resultG,s=state.resultS;if(!g)return;
@@ -1657,6 +1741,8 @@ function showResult(){
   history.replaceState(null,'',location.pathname+'#type='+realG+'-'+realS);
   const hintKey=realG+'-'+realS;
   const hint=TYPE_HINTS[hintKey]||'';
+  const quote=TYPE_QUOTES[hintKey]||'';
+  const tags=TYPE_TAGS[hintKey]||[];
   const mateData=TYPE_MATES[hintKey];
   const mateType=mateData?TYPES.find(t=>t.g===mateData.g&&t.s===mateData.s):null;
   const overlay=document.getElementById('resultOverlay');
@@ -1668,7 +1754,7 @@ function showResult(){
       <div class="chara-wrap">
         <div class="chara-ring" style="border-color:${grp.color}"></div>
         <div class="chara-ring-inner" style="border-color:${grp.color}"></div>
-        <div class="chara-avatar" style="background:${ch.bg}">${ch.emoji}</div>
+        <div class="chara-avatar">${makeCharaImg(realG,realS)}</div>
         <div class="chara-sparkle">✦</div>
         <div class="chara-sparkle">✧</div>
         <div class="chara-sparkle">✦</div>
@@ -1678,6 +1764,8 @@ function showResult(){
       <div class="type-group" style="color:${grp.color}">${grp.emoji} ${grp.name} × ${sub.name}</div>
       <h2>${grp.ja}・${sub.ja}</h2>
       <div class="type-tagline">${type.tagline}</div>
+      ${quote?`<div class="chara-quote">${quote}</div>`:''}
+      ${tags.length?`<div class="chara-tags">${tags.map(t=>`<span class="chara-tag">${t}</span>`).join('')}</div>`:''}
       <div class="chara-personality">${ch.personality}</div>
     </div>
     <div class="result-section">
@@ -1698,7 +1786,7 @@ function showResult(){
       </div>
     </div>
     ${hint?`<div class="result-section"><h3>💍 プロポーズシーンのヒント</h3><div class="rex-card"><p>${hint}</p></div></div>`:''}
-    ${mateType?`<div class="result-section"><h3>💑 相性のよいRing Type</h3><div class="mate-card" onclick="showTypeResult('${mateData.g}','${mateData.s}')"><div class="mate-avatar" style="background:${mateType.chara.bg};display:flex;align-items:center;justify-content:center;font-size:2rem">${mateType.chara.emoji}</div><div class="mate-info"><div class="mate-label">相性タイプ（タップで確認）</div><div class="mate-name">${mateType.chara.name}</div><p>${mateData.reason}</p></div></div></div>`:''}
+    ${mateType?`<div class="result-section"><h3>💑 相性のよいRing Type</h3><div class="mate-card" onclick="showTypeResult('${mateData.g}','${mateData.s}')"><div class="mate-avatar">${makeCharaImg(mateData.g,mateData.s)}</div><div class="mate-info"><div class="mate-label">相性タイプ（タップで確認）</div><div class="mate-name">${mateType.chara.name}</div><p>${mateData.reason}</p></div></div></div>`:''}
     <div class="result-actions">
       <button class="btn btn-primary" onclick="closeResult();startQuiz()">もう一度診断する</button>
       <a href="#catalog" class="btn btn-outline" onclick="closeResult()">ブランド一覧へ</a>
