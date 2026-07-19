@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'none'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Ring Type | 婚約指輪タイプ診断（16タイプ） &amp; ブランド比較カタログ</title>
 <meta name="description" content="12の質問であなたの「Ring Type」を無料診断。16タイプのキャラクターがあなたにぴったりの婚約指輪ブランドを提案します。日本で買える婚約指輪ブランドをカタログ・ポジショニングマップ・購入ガイドで横断比較できる、プロポーズ準備の情報サイト。">
@@ -26,7 +26,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js" integrity="sha384-FcQlsUOd0TJjROrBxhJdUhXTUgNJQxTMcxZe6nHbaEfFL1zjQ+bq/uRoBQxb0KMo" crossorigin="anonymous"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"Ring Type","alternateName":"Ring Type 婚約指輪タイプ診断","url":"https://yuuuta-fffff.github.io/ring-type/","description":"12の質問であなたのRing Typeを無料診断。16タイプのキャラクターが、あなたにぴったりの婚約指輪ブランドを提案する情報サイト。","inLanguage":"ja"}
 </script>
@@ -112,15 +111,15 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
 .quiz-card{max-width:600px;width:100%;text-align:center;animation:fadeUp 0.4s ease}
 .quiz-card h3{font-family:var(--font-serif);font-size:1.4rem;color:var(--navy);margin-bottom:8px}
 .quiz-card .quiz-axis{font-size:0.75rem;color:var(--gold);letter-spacing:2px;margin-bottom:32px}
-.quiz-poles{display:flex;justify-content:space-between;gap:20px;margin-bottom:28px}
-.quiz-pole{flex:1;padding:16px;border-radius:var(--radius);background:var(--white);text-align:center;border:1px solid var(--border)}
+.quiz-poles{display:flex;justify-content:space-between;align-items:stretch;gap:20px;margin-bottom:28px}
+.quiz-pole{flex:1;padding:18px 16px;border-radius:var(--radius);background:var(--white);text-align:center;border:1px solid var(--border);display:flex;flex-direction:column;justify-content:center}
 .quiz-pole-label{font-weight:700;font-size:0.9rem;color:var(--navy);margin-bottom:4px}
 .quiz-pole-desc{font-size:0.78rem;color:var(--text-light)}
 .quiz-pole.pole-a{border-left:3px solid var(--gold)}
 .quiz-pole.pole-b{border-right:3px solid var(--rose)}
-.quiz-scale{display:flex;align-items:center;justify-content:center;gap:0;position:relative;padding:0 10px}
-.quiz-scale::before{content:'';position:absolute;top:50%;left:40px;right:40px;height:3px;background:linear-gradient(90deg,var(--gold),var(--border),var(--rose));border-radius:2px;transform:translateY(-50%);z-index:0}
-.quiz-scale-opt{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px 6px;flex:1;transition:var(--transition)}
+.quiz-scale{display:flex;align-items:flex-start;justify-content:center;gap:0;position:relative;padding:0 10px}
+.quiz-scale::before{content:'';position:absolute;top:36px;left:12%;right:12%;height:3px;background:linear-gradient(90deg,var(--gold),var(--border),var(--rose));border-radius:2px;transform:translateY(-50%);z-index:0}
+.quiz-scale-opt{position:relative;z-index:1;display:grid;grid-template-rows:56px auto;align-items:center;justify-items:center;row-gap:4px;cursor:pointer;padding:8px 6px;flex:1;transition:var(--transition)}
 .quiz-scale-dot{width:36px;height:36px;border-radius:50%;border:3px solid var(--border);background:var(--white);transition:var(--transition);display:flex;align-items:center;justify-content:center}
 .quiz-scale-opt:hover .quiz-scale-dot{border-color:var(--gold);transform:scale(1.15);box-shadow:0 0 12px rgba(212,175,55,0.3)}
 .quiz-scale-opt.selected .quiz-scale-dot{border-color:var(--gold);background:var(--gold);transform:scale(1.2)}
@@ -158,7 +157,22 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
 .result-type-card .type-desc{font-size:0.9rem;color:var(--text);line-height:1.8;max-width:500px;margin:0 auto}
 .result-section{margin-bottom:40px}
 .result-section h3{font-family:var(--font-serif);font-size:1.2rem;color:var(--navy);margin-bottom:20px;text-align:center}
-.result-chart-wrap{max-width:400px;margin:0 auto;background:var(--white);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.result-chart-wrap{max-width:520px;margin:0 auto;background:var(--white);border-radius:var(--radius);padding:28px 32px;box-shadow:var(--shadow)}
+/* 4軸 対比バー（MBTI風） */
+.axis-bars{display:flex;flex-direction:column;gap:26px}
+.axis-heads{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;gap:8px}
+.axis-heads .pole{font-size:0.78rem;color:var(--text-muted);font-weight:600;white-space:nowrap}
+.axis-heads .pole.on{font-weight:700}
+.axis-pct{font-size:0.88rem;font-weight:700;white-space:nowrap}
+.axis-track{position:relative;height:10px;border-radius:6px;background:rgba(0,0,0,0.07)}
+.axis-track::after{content:'';position:absolute;left:50%;top:-4px;bottom:-4px;width:2px;background:rgba(0,0,0,0.12);transform:translateX(-50%)}
+.axis-fill{position:absolute;top:0;bottom:0;border-radius:6px;opacity:0.85}
+.axis-marker{position:absolute;top:50%;width:20px;height:20px;border-radius:50%;background:var(--white);border:4px solid;transform:translate(-50%,-50%);box-shadow:0 2px 6px rgba(0,0,0,0.2)}
+@media(max-width:768px){
+  .result-chart-wrap{padding:22px 18px}
+  .axis-heads .pole{font-size:0.7rem}
+  .axis-pct{font-size:0.8rem}
+}
 .result-brands{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
 .result-brand-card{background:var(--white);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);text-align:center;transition:var(--transition)}
 .result-brand-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
@@ -570,11 +584,11 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
 <section class="section typemap-section" id="typemap">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label"><span class="en">Type Encyclopedia</span></div>
-      <h2 class="section-title">タイプ図鑑</h2>
-      <p class="section-desc">あなたの結果はどのタイプ？16の指輪タイプを一覧で比べよう。</p>
+      <span class="en">Type Encyclopedia</span>
+      <h2>タイプ図鑑</h2>
+      <p>あなたの結果はどのタイプ？16の指輪タイプを一覧で比べよう。気になるキャラをタップすると診断結果が見られます。</p>
     </div>
-    <div id="typemapContainer" class="typemap-groups reveal"></div>
+    <div id="typemapContainer" class="typemap-groups"></div>
   </div>
 </section>
 
@@ -1637,8 +1651,8 @@ function copyResultUrl(){
   }).catch(()=>{prompt('URLをコピーしてください:',url);});
 }
 function showTypeResult(g,s){
-  const gS={crown:{cm:30,sc:30},heritage:{cm:30,sc:70},stella:{cm:70,sc:30},atelier:{cm:70,sc:70}};
-  const sS={brilliant:{gm:30,tt:30},eternal:{gm:30,tt:70},grace:{gm:70,tt:30},pure:{gm:70,tt:70}};
+  const gS={crown:{cm:27,sc:27},heritage:{cm:27,sc:73},stella:{cm:73,sc:27},atelier:{cm:73,sc:73}};
+  const sS={brilliant:{gm:27,tt:27},eternal:{gm:27,tt:73},grace:{gm:73,tt:27},pure:{gm:73,tt:73}};
   if(gS[g]&&sS[s]){state.scores={...gS[g],...sS[s]};showResult();}
 }
 
@@ -1769,6 +1783,33 @@ function prevQuestion(){
 }
 
 // ===================== RESULT =====================
+function makeAxisBars(s){
+  const AXES=[
+    {key:'cm',left:'クラシック',right:'モダン',color:'#C9A84C'},
+    {key:'sc',left:'ステータス',right:'クラフト',color:'#9B1B2F'},
+    {key:'gm',left:'華やか',right:'シンプル',color:'#C2606B'},
+    {key:'tt',left:'トレンド',right:'タイムレス',color:'#3949AB'}
+  ];
+  return `<div class="axis-bars">${AXES.map(ax=>{
+    const v=Math.max(0,Math.min(100,s[ax.key]));
+    const leftDominant=v<50;
+    const pct=Math.round(leftDominant?100-v:v);
+    const poleName=leftDominant?ax.left:ax.right;
+    const fillLeft=leftDominant?v:50;
+    const fillWidth=Math.abs(v-50);
+    return `<div class="axis-row">
+      <div class="axis-heads">
+        <span class="pole${leftDominant?' on':''}" ${leftDominant?`style="color:${ax.color}"`:''}>${ax.left}</span>
+        <span class="axis-pct" style="color:${ax.color}">${pct}% ${poleName}</span>
+        <span class="pole${leftDominant?'':' on'}" ${leftDominant?'':`style="color:${ax.color}"`}>${ax.right}</span>
+      </div>
+      <div class="axis-track">
+        <div class="axis-fill" style="left:${fillLeft}%;width:${fillWidth}%;background:${ax.color}"></div>
+        <div class="axis-marker" style="left:${v}%;border-color:${ax.color}"></div>
+      </div>
+    </div>`;
+  }).join('')}</div>`;
+}
 function showResult(){
   const s=state.scores;
   const realG=(s.cm<50?(s.sc<50?'crown':'heritage'):(s.sc<50?'stella':'atelier'));
@@ -1811,7 +1852,7 @@ function showResult(){
     </div>
     <div class="result-section">
       <h3>あなたの4軸スコア</h3>
-      <div class="result-chart-wrap"><canvas id="resultChart"></canvas></div>
+      <div class="result-chart-wrap">${makeAxisBars(s)}</div>
     </div>
     <div class="result-section">
       <h3>おすすめブランド TOP3</h3>
@@ -1820,7 +1861,7 @@ function showResult(){
           <div class="rank">${['1ST','2ND','3RD'][i]} MATCH</div>
           <h4>${b.n.j}</h4>
           <div class="brand-en">${b.n.e}</div>
-          <div class="match">マッチ度 ${Math.max(0,100-Math.round(b.matchDist)).toFixed(0)}%</div>
+          <div class="match">マッチ度 ${Math.max(0,100-b.matchDist).toFixed(1)}%</div>
           <div style="font-size:0.78rem;color:var(--text-light);margin-top:4px">${fmtRange(b.p)}</div>
           <div style="font-size:0.72rem;color:var(--gold-dark);margin-top:8px;font-weight:600">詳しく見る →</div>
         </div>`).join('')}
@@ -1832,7 +1873,7 @@ function showResult(){
       <button class="btn btn-primary" onclick="closeResult();startQuiz()">もう一度診断する</button>
       <a href="#catalog" class="btn btn-outline" onclick="closeResult()">ブランド一覧へ</a>
     </div>
-    <div class="result-section" style="text-align:center">
+    <div class="result-section" style="text-align:center;margin-top:56px">
       <h3>📣 結果をシェアする</h3>
       <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:16px">診断URLを送ると、同じ結果画面が直接開きます</p>
       <div class="share-row">
@@ -1841,10 +1882,6 @@ function showResult(){
         <button class="share-btn share-copy" id="copyBtn" onclick="copyResultUrl()">🔗 URLコピー</button>
       </div>
     </div>`;
-  setTimeout(()=>{
-    const ctx=document.getElementById('resultChart');
-    if(ctx){new Chart(ctx,{type:'radar',data:{labels:['クラシック⇔モダン','ステータス⇔クラフト','華やか⇔シンプル','トレンド⇔タイムレス'],datasets:[{label:'あなたのスコア',data:[s.cm,s.sc,s.gm,s.tt],backgroundColor:'rgba(212,175,55,0.2)',borderColor:'#D4AF37',borderWidth:2,pointBackgroundColor:'#D4AF37'}]},options:{scales:{r:{min:0,max:100,ticks:{display:false},grid:{color:'rgba(0,0,0,0.06)'},pointLabels:{font:{family:'Noto Sans JP',size:11}}}},plugins:{legend:{display:false}}}});}
-  },100);
 }
 function closeResult(){
   document.getElementById('resultOverlay').classList.remove('active');
@@ -1992,7 +2029,7 @@ function renderMap(){
     const ly=y+r+13;
     const overlap=placed.some(p=>Math.abs(p.x-x)<60&&Math.abs(p.y-ly)<16);
     if(!overlap){
-      html+=`<text x="${x}" y="${ly}" text-anchor="middle" font-size="8.5" fill="#777" font-family="sans-serif" pointer-events="none">${b.n.j}</text>`;
+      html+=`<text x="${x}" y="${ly}" text-anchor="middle" font-size="8.5" fill="#777" font-family="sans-serif" pointer-events="none" stroke="#FEFDF8" stroke-width="2.5" paint-order="stroke" stroke-linejoin="round">${b.n.j}</text>`;
       placed.push({x,y:ly});
     }
   });
@@ -2127,18 +2164,18 @@ function renderTypemap(){
       const tags=(TYPE_TAGS[key]||[]).slice(0,2);
       const quote=(TYPE_QUOTES[key]||'').replace(/「|」/g,'');
       const typeObj=TYPES.find(t=>t.g===grp.g&&t.s===sub.s);
-      const typeName=typeObj?typeObj.name:'';
-      const charaTitle=typeObj?typeObj.copy:'';
+      const typeName=typeObj?typeObj.chara.name:'';
+      const charaTitle=typeObj?typeObj.chara.title:'';
       return `<div class="typemap-card" onclick="showTypeResult('${grp.g}','${sub.s}')" style="border-top-color:${grp.bg}">
         <div class="typemap-avatar">${makeCharaImg(grp.g,sub.s)}</div>
         <div class="typemap-sub">${sub.label}</div>
         <div class="typemap-name">${typeName}</div>
         <div class="typemap-chara-title">${charaTitle}</div>
-        <div class="typemap-tagline">${sub.tagline}</div>
+        <div class="typemap-tagline">${typeObj?typeObj.tagline:sub.tagline}</div>
         <div class="typemap-tags">${tags.map(t=>`<span class="typemap-tag">${t}</span>`).join('')}</div>
       </div>`;
     }).join('');
-    return `<div class="typemap-group">
+    return `<div class="typemap-group reveal">
       <div class="typemap-group-header">
         <div class="typemap-group-badge" style="background:${grp.bg};color:#fff">${grp.badge}</div>
         <div>
@@ -2149,7 +2186,7 @@ function renderTypemap(){
       <div class="typemap-cards">${cards}</div>
     </div>`;
   }).join('');
-  container.querySelectorAll('.typemap-card').forEach(el=>observer.observe(el));
+  container.querySelectorAll('.typemap-group.reveal').forEach(el=>observer.observe(el));
 }
 
 // ===================== EVENT LISTENERS =====================
@@ -2183,6 +2220,13 @@ const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
 },{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+// Fallback: IntersectionObserverが発火しない環境でも画面内の要素は表示する
+setTimeout(()=>{
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.top<window.innerHeight&&r.bottom>0)el.classList.add('visible');
+  });
+},1200);
 
 // ===================== INIT =====================
 renderMap();
@@ -2190,14 +2234,15 @@ renderCatalog();
 renderGuides();
 document.querySelectorAll('.guide-card.reveal').forEach(el=>observer.observe(el));
 renderTypemap();
-// Hash-based type direct link
+// Hash-based direct link (#type=xxx-yyy → 結果画面 / #quiz → 診断開始)
 (function(){
   const h=location.hash;
+  if(h==='#quiz'){setTimeout(startQuiz,300);return;}
   if(h.startsWith('#type=')){
     const parts=h.slice(6).split('-');
     const g=parts[0],s=parts[1];
-    const gS={crown:{cm:30,sc:30},heritage:{cm:30,sc:70},stella:{cm:70,sc:30},atelier:{cm:70,sc:70}};
-    const sS={brilliant:{gm:30,tt:30},eternal:{gm:30,tt:70},grace:{gm:70,tt:30},pure:{gm:70,tt:70}};
+    const gS={crown:{cm:27,sc:27},heritage:{cm:27,sc:73},stella:{cm:73,sc:27},atelier:{cm:73,sc:73}};
+    const sS={brilliant:{gm:27,tt:27},eternal:{gm:27,tt:73},grace:{gm:73,tt:27},pure:{gm:73,tt:73}};
     if(gS[g]&&sS[s]){state.scores={...gS[g],...sS[s]};setTimeout(showResult,400);}
   }
 })();
