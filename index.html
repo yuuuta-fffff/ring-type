@@ -14,14 +14,14 @@
 <meta property="og:title" content="Ring Type | 婚約指輪タイプ診断（16タイプ）&amp; ブランド比較カタログ">
 <meta property="og:description" content="12の質問であなたのRing Typeを無料診断。16タイプのキャラクターが、あなたにぴったりの婚約指輪ブランドを提案します。">
 <meta property="og:url" content="https://yuuuta-fffff.github.io/ring-type/">
-<meta property="og:image" content="https://yuuuta-fffff.github.io/ring-type/ogp.png">
+<meta property="og:image" content="https://yuuuta-fffff.github.io/ring-type/assets/ogp.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ring Type | 婚約指輪タイプ診断（16タイプ）">
 <meta name="twitter:description" content="12の質問であなたのRing Typeを無料診断。あなたにぴったりの婚約指輪ブランドがわかります。">
-<meta name="twitter:image" content="https://yuuuta-fffff.github.io/ring-type/ogp.png">
+<meta name="twitter:image" content="https://yuuuta-fffff.github.io/ring-type/assets/ogp.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='60' r='28' fill='none' stroke='%23D4AF37' stroke-width='9'/%3E%3Cpath d='M50 4 L68 20 L50 36 L32 20 Z' fill='%23D4AF37'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -349,6 +349,7 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
 .type-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
 .type-card-avatar{width:92px;height:92px;margin:0 auto 12px;border-radius:50%;overflow:hidden}
 .type-card-avatar svg,.mate-avatar svg,.chara-avatar svg{width:100%;height:100%;display:block}
+.chara-img{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%;background:var(--white);transform:scale(1.08)}
 .type-card-group{font-size:0.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
 .type-card-name{font-family:var(--font-serif);font-size:0.95rem;color:var(--navy);font-weight:700;line-height:1.3}
 .type-card-chara{font-size:0.72rem;color:var(--text-muted);margin-top:3px}
@@ -416,8 +417,8 @@ body{font-family:var(--font-sans);color:var(--text);background:var(--cream);line
 .typemap-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
 .typemap-card::after{content:'詳しく見る →';position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,transparent 0%,rgba(26,31,54,0.06) 100%);color:var(--gold-dark);font-size:0.72rem;font-weight:700;padding:10px 0 12px;opacity:0;transition:var(--transition)}
 .typemap-card:hover::after{opacity:1}
-.typemap-avatar{width:88px;height:88px;margin:0 auto 14px;border-radius:50%;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.12)}
-.typemap-avatar svg{width:100%;height:100%;display:block}
+.typemap-avatar{width:94px;height:94px;margin:0 auto 14px;border-radius:50%;overflow:hidden;background:var(--white)}
+.typemap-avatar svg,.typemap-avatar img{width:100%;height:100%;display:block}
 .typemap-sub{font-size:0.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
 .typemap-name{font-family:var(--font-serif);font-size:0.95rem;color:var(--navy);font-weight:700;margin-bottom:2px;line-height:1.3}
 .typemap-chara-title{font-size:0.68rem;color:var(--text-muted);margin-bottom:8px}
@@ -1476,37 +1477,37 @@ const TYPE_SUBS={
 };
 const TYPES=[
   {g:"crown",s:"brilliant",tagline:"華やかさと格式を兼ね備えた主役級の輝き",desc:"あなたは華やかで最旬のトレンドも取り入れつつ、確かなブランド力に裏打ちされた輝きを求めるタイプ。パートナーに「誰もが認める最高の一品」を贈りたいという思いが強く、存在感のあるダイヤモンドが映える指輪がぴったりです。",
-   chara:{name:"ルミエール・クラウン",title:"華麗なるジュエルクイーン",emoji:"👑",bg:"linear-gradient(135deg,#FFD700,#FF6B9D)",personality:"舞踏会の主役のような圧倒的存在感。「最高のものを、最高の瞬間に」がモットー。パートナーの指に輝く大粒ダイヤを夢見る情熱家。華やかさの中にも確かな審美眼を持つ。"}},
+   chara:{name:"どうどうライオン",title:"大粒ダイヤで主役を張る",emoji:"🦁",bg:"linear-gradient(135deg,#FFD700,#FF6B9D)",personality:"百獣の王らしく、贈るなら誰もが振り向く一品を。「最高のものを、最高の瞬間に」が口ぐせ。パートナーの指で大粒ダイヤが輝く瞬間を思い描いては、ひとりでニヤけている情熱家。華やかさに目がないが、選ぶ目は確か。"}},
   {g:"crown",s:"eternal",tagline:"時を超えて愛される永遠の王道",desc:"あなたは流行に左右されない、永遠の美しさと格式を大切にするタイプ。100年後も色褪せない王道のデザインと、世代を超えて受け継がれるブランドの歴史に価値を感じます。",
-   chara:{name:"エテルナ・ロワイヤル",title:"永遠の気品を纏う守護者",emoji:"🏰",bg:"linear-gradient(135deg,#1A237E,#D4AF37)",personality:"静かな威厳と揺るぎない信念の持ち主。「100年後も愛される一品を」という言葉に心が震える。代々受け継がれる家宝のように、永遠の価値を信じるロマンチスト。"}},
+   chara:{name:"ゆうがスワン",title:"100年後も愛される王道を選ぶ",emoji:"🦢",bg:"linear-gradient(135deg,#1A237E,#D4AF37)",personality:"つがいで一生を添い遂げる白鳥のように、変わらないものを信じる。「100年後も愛される一品を」という言葉に心が震える。流行には流されず、代々受け継がれる家宝のような価値を静かに選び取る。"}},
   {g:"crown",s:"grace",tagline:"洗練されたステータスをさりげなく",desc:"あなたはシンプルでありながらも確かなブランド力を纏いたいタイプ。派手すぎず、でも「わかる人にはわかる」上質さを大切にします。モダンな感性で選ぶ正統派です。",
-   chara:{name:"グレイス・ノーブル",title:"知的で控えめな貴公子",emoji:"🎩",bg:"linear-gradient(135deg,#2C3E50,#BDC3C7)",personality:"「わかる人にはわかる」を体現する洗練の達人。声高に主張しないが、纏う空気が違う。さりげなくブランドの格を身に着ける知的なエレガンス。"}},
+   chara:{name:"しれっとクロヒョウ",title:"わかる人にはわかればいい",emoji:"🐆",bg:"linear-gradient(135deg,#2C3E50,#BDC3C7)",personality:"声高に主張しないが、まとう空気が違う。「わかる人にはわかればいい」を体現する洗練の達人。ロゴの大きさより質感で選ぶ。静かに、でも確実に、格の違いをわからせるタイプ。"}},
   {g:"crown",s:"pure",tagline:"格式と品格の正統派",desc:"あなたはシンプルかつタイムレスな美しさと、揺るぎないブランドの格を求めるタイプ。最高品質のダイヤモンドが一粒輝くソリティアのような、本質的な美しさを大切にします。",
-   chara:{name:"ピュリス・マジェスティ",title:"一粒の真実を追い求める王",emoji:"💎",bg:"linear-gradient(135deg,#0D1B2A,#E0E0E0)",personality:"余計なものを一切排除し、最高品質のダイヤ一粒に全てを懸ける究極の本質主義者。ソリティアリングのような凛とした美しさ。言葉は少なくとも、その選択は揺るがない。"}},
+   chara:{name:"いちずシカ",title:"一粒のダイヤに全部を込める",emoji:"🦌",bg:"linear-gradient(135deg,#0D1B2A,#E0E0E0)",personality:"余計なものは一切いらない。最高品質のダイヤ一粒にすべてを懸ける究極の本質主義者。ソリティアリングのような凛とした美しさを愛する。言葉は少ないが、その選択は決して揺るがない。"}},
   {g:"heritage",s:"brilliant",tagline:"匠の技が花開く華やかなクラフト",desc:"あなたは伝統的な職人技が生み出す華やかな美に惹かれるタイプ。ブランド名よりも「どう作られているか」に価値を感じつつ、華やかさも譲れない。技術と美の融合を求めます。",
-   chara:{name:"フローラ・マイスター",title:"花咲く錬金術師",emoji:"🌺",bg:"linear-gradient(135deg,#8B0000,#FFD700)",personality:"伝統の技で花を咲かせる華麗な職人気質。ミルグレインやパヴェの緻密な技術に心を奪われ、「どう作られているか」を語り出すと止まらない。技術と華やかさの両立を信条とする。"}},
+   chara:{name:"きらきらミツバチ",title:"緻密な細工に目がない",emoji:"🐝",bg:"linear-gradient(135deg,#8B0000,#FFD700)",personality:"花から花へ、細工から細工へ。ミルグレインやパヴェの緻密な仕事を見つけると、羽音を立てて飛んでいく。「どう作られているか」を語り出すと止まらない働き者。技術と華やかさ、どちらも譲らない。"}},
   {g:"heritage",s:"eternal",tagline:"伝統技術が紡ぐ永遠のロマン",desc:"あなたは長い歴史に裏打ちされた確かな技術と、永遠に続く美しさを大切にするタイプ。世界三大カッターズブランドのように、技術の系譜と歴史のロマンに心を動かされます。",
-   chara:{name:"クロノス・ヘリテージ",title:"悠久の時を刻む時計師",emoji:"⏳",bg:"linear-gradient(135deg,#1A237E,#4A7C59)",personality:"歴史と技術の物語に目を輝かせるロマンチスト。世界三大カッターズブランドの系譜を語らせれば右に出る者なし。「良い指輪には、良い物語がある」が信条。"}},
+   chara:{name:"ものしりフクロウ",title:"歴史を語り出すと止まらない",emoji:"🦉",bg:"linear-gradient(135deg,#1A237E,#4A7C59)",personality:"ブランドの創業年から職人の系譜まで、聞けば何でも出てくる知恵袋。「良い指輪には、良い物語がある」が信条。世界三大カッターズブランドの話をさせたら、夜が明けるまで語り続ける。"}},
   {g:"heritage",s:"grace",tagline:"職人技とモダンな感性の融合",desc:"あなたは控えめながらも確かな品質を求めるタイプ。シンプルなデザインの中に光る職人の技と、今の時代の空気感を大切にします。",
-   chara:{name:"シズカ・アルティザン",title:"静かなる彫金の名手",emoji:"🔨",bg:"linear-gradient(135deg,#5D4037,#A1887F)",personality:"寡黙だが、その手から生まれる作品は雄弁。シンプルなデザインの奥に宿る「確かな技」に価値を見出す。派手さはないが、手に取ると違いがわかる——そんな指輪を選ぶ。"}},
+   chara:{name:"もくもくビーバー",title:"語らず手仕事で示す",emoji:"🦫",bg:"linear-gradient(135deg,#5D4037,#A1887F)",personality:"口下手だけど、その手から生まれるものは雄弁。シンプルなデザインの奥に宿る「確かな技」を見抜く。派手さはないが、手に取れば違いがわかる——そんな指輪を黙って選ぶ。"}},
   {g:"heritage",s:"pure",tagline:"素材と技の本質を大切に",desc:"あなたは装飾よりも素材と製法の本質に価値を見出すタイプ。鍛造やプラチナの品質など、目に見えない部分の確かさにこだわります。",
-   chara:{name:"テツ・フォージ",title:"鍛造の魂を宿す鍛冶師",emoji:"⚒️",bg:"linear-gradient(135deg,#37474F,#78909C)",personality:"「見えない部分にこそ真価がある」。鍛造製法やプラチナ純度にこだわる本質追求者。表面の輝きより内部の密度と強度を語り、素材そのものの美しさを信じる。"}},
+   chara:{name:"ずっしりクマ",title:"見えない部分にこそ本気を出す",emoji:"🐻",bg:"linear-gradient(135deg,#37474F,#78909C)",personality:"「見えない部分にこそ真価がある」。鍛造製法やプラチナの純度にこだわり抜く本質追求者。表面の輝きより、内側の密度と強さを語る。頼りがいのある、静かな職人気質。"}},
   {g:"stella",s:"brilliant",tagline:"最先端の輝きとステータス",desc:"あなたは新しいラグジュアリーの形を追求するタイプ。伝統に囚われず、最先端のデザインと確かなステータスを両立させたい。革新的なブランドに惹かれます。",
-   chara:{name:"ノヴァ・プリズム",title:"未来を照らす光のイノベーター",emoji:"🌟",bg:"linear-gradient(135deg,#7C3AED,#F59E0B)",personality:"「古い常識を壊す」がテーマ。最新のカッティング技術やデザイナーズジュエリーに誰より早くアンテナを張る先駆者。伝統は尊重するが、自分はいつも一歩先を行きたい。"}},
+   chara:{name:"めざといキツネ",title:"誰より早く新しさを見つける",emoji:"🦊",bg:"linear-gradient(135deg,#7C3AED,#F59E0B)",personality:"新しいものの匂いを、誰よりも早く嗅ぎつける。最新のカッティング技術やデザイナーズジュエリーには常にアンテナ全開。「まだ誰も知らないうちに見つけたい」——先を行くことが何より楽しい。"}},
   {g:"stella",s:"eternal",tagline:"新しい時代の永遠のラグジュアリー",desc:"あなたはモダンでありながらも永遠の価値を求めるタイプ。最新の技術やデザインで表現される、新しい形のタイムレスな美しさに惹かれます。",
-   chara:{name:"ソレイユ・ネオ",title:"新時代の永遠を紡ぐ建築家",emoji:"🔮",bg:"linear-gradient(135deg,#6366F1,#EC4899)",personality:"モダンと永遠の両立を夢見る理想主義者。「今生まれたものが100年後のクラシックになる」。最新技術で表現される新しいタイムレスの形を追い求める、未来志向のロマンチスト。"}},
+   chara:{name:"みらいオオカミ",title:"今つくるものが未来の定番",emoji:"🐺",bg:"linear-gradient(135deg,#6366F1,#EC4899)",personality:"群れずに、遠くを見ている。「今つくられたものが、100年後のクラシックになる」と本気で信じる未来志向のロマンチスト。最新技術が生む、新しいかたちのタイムレスを追い求める。"}},
   {g:"stella",s:"grace",tagline:"引き算の美学で魅せるモダンな格",desc:"あなたはミニマルでありながらモダンなセンスを重視するタイプ。シンプルな中にブランドの格が感じられる、洗練された引き算のデザインを好みます。",
-   chara:{name:"ミニマ・エッセンス",title:"引き算の美学を極める審美家",emoji:"◼️",bg:"linear-gradient(135deg,#1F2937,#9CA3AF)",personality:"「何を足すか」ではなく「何を削るか」で勝負する。ミニマルなデザインの中にブランドの哲学を見出す審美家。余白の美しさを知る、都会的で洗練されたセンスの持ち主。"}},
+   chara:{name:"すっきりネコ",title:"引き算こそ最高のセンス",emoji:"🐱",bg:"linear-gradient(135deg,#1F2937,#9CA3AF)",personality:"「何を足すか」ではなく「何を削るか」で勝負する。余白の美しさを知っている都会派。気に入らないものには見向きもしないが、これと決めたものは長く愛でる。"}},
   {g:"stella",s:"pure",tagline:"都会的で洗練されたシンプルモダン",desc:"あなたは都会的で洗練されたシンプルさを求めるタイプ。流行に左右されないモダンなデザインと、実用性を兼ね備えた指輪を選びたい方です。",
-   chara:{name:"アーバン・クリア",title:"透明感のある都会のスタイリスト",emoji:"🏙️",bg:"linear-gradient(135deg,#374151,#60A5FA)",personality:"シンプル・モダン・実用的。毎日着けても美しいデザインと、暮らしに寄り添う使い心地を追求する。飾らないけれど洗練されている——そんな在り方そのものが美学。"}},
+   chara:{name:"きちんとペンギン",title:"毎日つけられる実用性で選ぶ",emoji:"🐧",bg:"linear-gradient(135deg,#374151,#60A5FA)",personality:"シンプル・モダン・実用的。毎日着けても美しく、暮らしの邪魔をしないデザインを選ぶ。飾らないけれど、きちんとしている——その在り方そのものが美学。"}},
   {g:"atelier",s:"brilliant",tagline:"前衛的で個性が光るアート系",desc:"あなたはアーティスティックで個性的な表現を好むタイプ。量産品にはない独自の美を追求し、エメラルドカットやカラーメタルなど珍しい素材やカットに惹かれます。",
-   chara:{name:"アヴァン・パレット",title:"色彩と造形の前衛アーティスト",emoji:"🎨",bg:"linear-gradient(135deg,#059669,#F59E0B)",personality:"「人と同じは絶対イヤ」。エメラルドカットやファンシーカラー、コンビネーションメタルなど珍しい素材に惹かれる個性派。指輪をキャンバスと捉え、二人だけのアート作品を生み出したい。"}},
+   chara:{name:"はでいろインコ",title:"人と同じは絶対にイヤ",emoji:"🦜",bg:"linear-gradient(135deg,#059669,#F59E0B)",personality:"「人と同じは絶対にイヤ」。エメラルドカットにファンシーカラー、コンビネーションメタル——珍しいものを見つけると声が大きくなる。指輪はキャンバス、二人だけのアート作品を創りたい。"}},
   {g:"atelier",s:"eternal",tagline:"創造性と永遠性を結ぶ唯一無二",desc:"あなたは職人の手仕事と永遠の価値を大切にするタイプ。オーダーメイドで世界に一つだけの指輪を作りたい。エシカルな価値観も持ち合わせています。",
-   chara:{name:"ユニーク・エバー",title:"世界に一つだけを創る魔法使い",emoji:"🪄",bg:"linear-gradient(135deg,#065F46,#D97706)",personality:"「既製品には魂が宿らない」。オーダーメイドで世界にひとつだけの指輪を創りたいロマンチスト。エシカルな素材やフェアトレードにも関心が深い。永遠に残る「物語のある指輪」を信じる。"}},
+   chara:{name:"ゆめみウサギ",title:"世界にひとつだけを本気で叶える",emoji:"🐰",bg:"linear-gradient(135deg,#065F46,#D97706)",personality:"「既製品には魂が宿らない」。オーダーメイドで世界にひとつだけの指輪を創ることを夢見ている。エシカルな素材やフェアトレードにも関心が深い、心やさしい夢想家。"}},
   {g:"atelier",s:"grace",tagline:"自分らしさを追求するフリースタイル",desc:"あなたは自分らしさと自由な感性を大切にするタイプ。ブランドの格より「この指輪が好き」という直感を信じる。アトリエで職人と一緒に作る体験にも価値を感じます。",
-   chara:{name:"リベル・フリー",title:"直感で選ぶ自由な旅人",emoji:"🌿",bg:"linear-gradient(135deg,#047857,#34D399)",personality:"ブランドより「好き」の直感を信じる自由人。アトリエで職人と一緒に指輪を作る体験そのものに価値を見出す。肩の力が抜けた自然体のおしゃれさんで、二人らしい選択を大切にする。"}},
+   chara:{name:"きままカワウソ",title:"好き、の直感がいちばん正しい",emoji:"🦦",bg:"linear-gradient(135deg,#047857,#34D399)",personality:"ブランドの格より「好き」の直感を信じる自由人。アトリエで職人と一緒に指輪を作る、その時間そのものが楽しい。肩の力が抜けた自然体で、二人らしい選択を大切にする。"}},
   {g:"atelier",s:"pure",tagline:"本質と素材だけで勝負する",desc:"あなたは無駄を削ぎ落とし、素材と製法の本質で勝負するタイプ。EC/D2Cの合理的な価格設定や、中間コストを排除した適正価格に共感します。",
-   chara:{name:"フィロ・エッセンシャル",title:"本質を見極める賢者",emoji:"📐",bg:"linear-gradient(135deg,#1E3A5F,#64748B)",personality:"「適正価格で最高品質を」。中間マージンを排除したD2Cモデルや、素材の本質に共感する合理主義者。見栄ではなく納得感で選ぶ。無駄を削ぎ落とした先にある真の美しさを知っている。"}}
+   chara:{name:"こつこつリス",title:"値段より納得感で選ぶ",emoji:"🐿️",bg:"linear-gradient(135deg,#1E3A5F,#64748B)",personality:"「適正価格で最高品質を」。中間マージンを省いたD2Cモデルや、素材の本質にしっかり共感する堅実派。見栄ではなく納得感で選ぶ。調べに調べて、いちばん納得のいくひとつを見つけてくる。"}}
 ];
 
 // ===================== TYPE HINTS & MATES =====================
@@ -1547,48 +1548,11 @@ const TYPE_MATES={
   "atelier-pure":{g:"stella",s:"pure",reason:"本質・合理性・適正価格という価値観が強く共鳴。互いの選択を尊重し合える。"}
 };
 
-// ===================== CHARACTER SVG =====================
-function makeCharaImg(g,s){
-  const GBG={crown:'#9B1B2F',heritage:'#1A237E',stella:'#6A1B9A',atelier:'#1B5E20'};
-  const SK={crown:'#FDD5B1',heritage:'#F8D59E',stella:'#FFCBA4',atelier:'#FFE0B2'};
-  const EC={crown:'#3E2723',heritage:'#4E342E',stella:'#1A237E',atelier:'#1B5E20'};
-  const HC={brilliant:'#E91E63',eternal:'#C9A84C',grace:'#607D8B',pure:'#A1887F'};
-  const hc=HC[s];
-  const blush=s==='brilliant'||s==='pure';
-  const tops={
-    crown:`<path d="M33 47 L40 37 L50 43 L60 37 L67 47 Z" fill="#FFD700" stroke="#FFA000" stroke-width="0.5"/>
-<circle cx="40" cy="37" r="2.8" fill="#FF4081"/><circle cx="50" cy="43" r="2.5" fill="#E040FB"/><circle cx="60" cy="37" r="2.8" fill="#FF4081"/>`,
-    heritage:`<rect x="32" y="42" width="36" height="7" rx="3.5" fill="${hc}" opacity="0.85"/>
-<rect x="41" y="32" width="4" height="12" rx="2" fill="${hc}" opacity="0.9"/>
-<rect x="48" y="30" width="4" height="14" rx="2" fill="${hc}" opacity="0.9"/>
-<rect x="55" y="32" width="4" height="12" rx="2" fill="${hc}" opacity="0.9"/>`,
-    stella:`<polygon points="50,29 53,38 62,38 55.5,44 58,53 50,47 42,53 44.5,44 38,38 47,38" fill="#FFD700" opacity="0.95"/>`,
-    atelier:`<circle cx="35" cy="40" r="5.5" fill="#E91E63" opacity="0.9"/>
-<circle cx="50" cy="32" r="5.5" fill="#FF9800" opacity="0.9"/>
-<circle cx="65" cy="40" r="5.5" fill="#42A5F5" opacity="0.9"/>`
-  };
-  const hairs={
-    brilliant:`<path d="M27 66 Q29 44 50 40 Q71 44 73 66" fill="${hc}" opacity="0.9"/>
-<ellipse cx="50" cy="41" rx="23" ry="6" fill="${hc}" opacity="0.9"/>`,
-    eternal:`<path d="M28 68 Q26 49 33 42 Q41 33 50 33 Q59 33 67 42 Q74 49 72 68" fill="${hc}" opacity="0.9"/>`,
-    grace:`<path d="M30 63 Q33 47 50 44 Q67 47 70 63" fill="${hc}"/>
-<rect x="30" y="44" width="40" height="7" rx="3.5" fill="${hc}"/>`,
-    pure:`<path d="M31 65 Q33 48 50 46 Q67 48 69 65" fill="${hc}" opacity="0.9"/>
-<ellipse cx="50" cy="46" rx="19" ry="5" fill="${hc}" opacity="0.9"/>`
-  };
-  const smile=s==='grace'
-    ?`<path d="M44 69.5 L56 69.5" stroke="${EC[g]}" stroke-width="1.8" stroke-linecap="round"/>`
-    :`<path d="M44 68 Q50 74 56 68" stroke="#C62828" stroke-width="1.8" fill="none" stroke-linecap="round"/>`;
-  return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<circle cx="50" cy="50" r="50" fill="${GBG[g]}"/>
-${hairs[s]}${tops[g]}
-<circle cx="50" cy="65" r="22" fill="${SK[g]}"/>
-<ellipse cx="42" cy="62" rx="3.2" ry="3.6" fill="${EC[g]}"/>
-<ellipse cx="58" cy="62" rx="3.2" ry="3.6" fill="${EC[g]}"/>
-<circle cx="43.3" cy="60.5" r="1.2" fill="white"/><circle cx="59.3" cy="60.5" r="1.2" fill="white"/>
-${blush?`<ellipse cx="37" cy="67" rx="4.5" ry="2.2" fill="#FFB3C6" opacity="0.6"/>
-<ellipse cx="63" cy="67" rx="4.5" ry="2.2" fill="#FFB3C6" opacity="0.6"/>`:''}
-${smile}</svg>`;
+// ===================== CHARACTER IMAGE =====================
+function makeCharaImg(g,s,eager){
+  const t=TYPES.find(x=>x.g===g&&x.s===s);
+  const alt=t?t.chara.name:'';
+  return `<img class="chara-img" src="assets/chara/${g}-${s}.jpg" alt="${alt}" width="320" height="320" decoding="async" loading="${eager?'eager':'lazy'}">`;
 }
 
 // ===================== TYPE QUOTES & TAGS =====================
@@ -1836,7 +1800,7 @@ function showResult(){
       <div class="chara-wrap">
         <div class="chara-ring" style="border-color:${grp.color}"></div>
         <div class="chara-ring-inner" style="border-color:${grp.color}"></div>
-        <div class="chara-avatar">${makeCharaImg(realG,realS)}</div>
+        <div class="chara-avatar">${makeCharaImg(realG,realS,true)}</div>
         <div class="chara-sparkle">✦</div>
         <div class="chara-sparkle">✧</div>
         <div class="chara-sparkle">✦</div>
@@ -2167,7 +2131,7 @@ function renderTypemap(){
       const typeName=typeObj?typeObj.chara.name:'';
       const charaTitle=typeObj?typeObj.chara.title:'';
       return `<div class="typemap-card" onclick="showTypeResult('${grp.g}','${sub.s}')" style="border-top-color:${grp.bg}">
-        <div class="typemap-avatar">${makeCharaImg(grp.g,sub.s)}</div>
+        <div class="typemap-avatar" style="box-shadow:0 0 0 3px ${grp.bg}, 0 4px 12px rgba(0,0,0,0.14)">${makeCharaImg(grp.g,sub.s)}</div>
         <div class="typemap-sub">${sub.label}</div>
         <div class="typemap-name">${typeName}</div>
         <div class="typemap-chara-title">${charaTitle}</div>
